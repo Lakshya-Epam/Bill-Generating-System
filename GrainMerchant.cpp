@@ -116,7 +116,7 @@ void Bill::choice()
 		cout << "2. View customers list" << endl;
 		cout << "3. Update information of existing Customer" << endl;
 		cout << "4. Check the details of an existing Customer" << endl;
-		cout << "5. For transactions" << endl;
+		cout << "5. For summary review" << endl;
 		cout << "6. Remove existing Customer" << endl;
 		cout << "7. Exit" << endl;
 		cin >> ch;
@@ -370,6 +370,9 @@ void Bill::del()
 		{
 			if (ch == customerList[i].rstNo)
 			{
+				 totalCashDistributed -=customerList[i].cash ;
+				 totalHammaliCharges -=customerList[i].hammali ;
+				 totalKataCharges -=customerList[i].kataCharges ;
 				customerList.erase(customerList.begin() + i);
 				cout << "Your Record has been deleted" << endl;
 				break;
@@ -383,6 +386,9 @@ void Bill::del()
 	else if (ch == '2')
 	{
 		customerList.clear();
+		 totalCashDistributed = 0;
+		 totalHammaliCharges = 0;
+		 totalKataCharges = 0;
 		cout << "All record is deleted" << endl;
 	}
 	else
